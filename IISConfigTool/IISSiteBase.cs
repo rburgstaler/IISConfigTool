@@ -5,7 +5,7 @@ using System.Text;
 using System.IO;
 using System.Diagnostics;
 
-namespace IISUtil
+namespace IISConfigTool
 {
     public class IISIdentifier
     {

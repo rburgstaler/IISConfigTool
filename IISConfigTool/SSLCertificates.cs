@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
-namespace IISUtil
+namespace IISConfigTool
 {
     public delegate void SSLOutputMessage(String msg);
     public class SSLCertificates

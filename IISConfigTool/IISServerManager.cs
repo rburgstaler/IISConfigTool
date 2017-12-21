@@ -6,7 +6,7 @@ using Microsoft.Web.Administration;
 using System.IO;
 using System.Reflection;
 
-namespace IISUtil
+namespace IISConfigTool
 {
     public class IISSM : IIS
     {

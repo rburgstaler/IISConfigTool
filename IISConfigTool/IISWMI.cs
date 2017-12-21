@@ -6,7 +6,7 @@ using System.DirectoryServices;
 using System.Reflection;
 using System.IO;
 
-namespace IISUtil
+namespace IISConfigTool
 {
     //IIS 6 did not yet support the new ServerManager component that is available in newer version
     //Instead we need to make use of the WMI (Windows Management Instrumentation) to make modifications
