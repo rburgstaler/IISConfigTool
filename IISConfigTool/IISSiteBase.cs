@@ -61,6 +61,7 @@ namespace IISConfigTool
         public abstract Int32 AuthFlags { get; set; }
         public abstract void SetASPDotNetVersion(AspDotNetVersion version);
         public abstract String SiteId { get; set; }
+        public abstract IISBinding FindBinding(IISBinding iisBinding);
     }
 
     public enum AspDotNetVersion

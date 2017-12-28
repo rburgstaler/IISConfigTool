@@ -115,6 +115,29 @@ namespace IISConfigTool
             CommitServerManagerChanges();
         }
 
+        public override IISBinding FindBinding(IISBinding iisBinding)
+        {
+            Binding binding = site.Bindings.FirstOrDefault<Binding>(t => t.BindingInformation.Equals(iisBinding.SMBindString, StringComparison.CurrentCultureIgnoreCase));
+            if (binding != null)
+            {
+                IISBinding bnd = new IISBinding()
+                {
+                    CertificateHash = SSLCertificates.ByteArrayToHexString(binding.CertificateHash),
+                    CertificateStore = binding.CertificateStoreName,
+                    Host = iisBinding.Host,
+                    IP = iisBinding.IP,
+                    Protocol = iisBinding.Protocol,
+                    Port = iisBinding.Port
+                };
+                return bnd;
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+
         public override void Start()
         {
             //Start will report an error "The object identifier does not represent a valid object. (Exception from 

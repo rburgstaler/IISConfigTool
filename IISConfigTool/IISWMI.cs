@@ -134,6 +134,11 @@ namespace IISConfigTool
                 });
             webServer.CommitChanges();
         }
+        public override IISBinding FindBinding(IISBinding iisBinding)
+        {
+            // Not developed yet.
+            throw new NotImplementedException();
+        }
 
         public override void Start()
         {
