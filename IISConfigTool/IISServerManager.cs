@@ -122,7 +122,7 @@ namespace IISConfigTool
             {
                 IISBinding bnd = new IISBinding()
                 {
-                    CertificateHash = SSLCertificates.ByteArrayToHexString(binding.CertificateHash),
+                    CertificateHash = (binding.CertificateHash == null) ? "" : SSLCertificates.ByteArrayToHexString(binding.CertificateHash),
                     CertificateStore = binding.CertificateStoreName,
                     Host = iisBinding.Host,
                     IP = iisBinding.IP,
