@@ -11,17 +11,19 @@ namespace IISConfigTool
     {
         public void PrintOutAllCerts(SSLOutputMessage msgOutput)
         {
-            var store2 = new X509Store(StoreName.TrustedPublisher, StoreLocation.LocalMachine);
-            msgOutput("TrustedPublisher:");
-            PrintCerts(store2, msgOutput);
+            var stores = Enum.GetValues(typeof(StoreName)).Cast<StoreName>();
+            foreach (StoreName store in stores)
+            {
+                X509Store st = new X509Store(store, StoreLocation.LocalMachine);
+                msgOutput("==========="+Enum.GetName(typeof(StoreName), store) + "===========");
 
-            msgOutput("Personal:");
-            store2 = new X509Store(StoreName.My, StoreLocation.LocalMachine);
-            PrintCerts(store2, msgOutput);
+                PrintCerts(st, msgOutput);
+            }
 
-            msgOutput("CertificateAuthority:");
-            store2 = new X509Store(StoreName.CertificateAuthority, StoreLocation.LocalMachine);
-            PrintCerts(store2, msgOutput);
+            X509Store st2 = new X509Store("WebHosting");
+            msgOutput("===========" + st2.Name + "===========");
+
+            PrintCerts(st2, msgOutput);
         }
 
         public static String ByteArrayToHexString(byte[] byteArray)
@@ -59,7 +61,7 @@ namespace IISConfigTool
             store.Open(OpenFlags.OpenExistingOnly);
             foreach (var cert in store.Certificates)
             {
-                msgOutput(String.Format("{0} - {1}", cert.FriendlyName, ByteArrayToHexString(cert.GetCertHash())));
+                msgOutput($"{cert.Subject} - {cert.SubjectName} {cert.FriendlyName} - {ByteArrayToHexString(cert.GetCertHash())}");
             }
         }
 
