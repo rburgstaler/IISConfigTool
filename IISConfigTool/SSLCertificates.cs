@@ -58,10 +58,17 @@ namespace IISConfigTool
 
         public void PrintCerts(X509Store store, SSLOutputMessage msgOutput)
         {
-            store.Open(OpenFlags.OpenExistingOnly);
-            foreach (var cert in store.Certificates)
+            try
             {
-                msgOutput($"{cert.Subject} - {cert.SubjectName} {cert.FriendlyName} - {ByteArrayToHexString(cert.GetCertHash())}");
+                store.Open(OpenFlags.OpenExistingOnly);
+                foreach (var cert in store.Certificates)
+                {
+                    msgOutput($"{cert.Subject} - {cert.SubjectName} {cert.FriendlyName} - {ByteArrayToHexString(cert.GetCertHash())}");
+                }
+            }
+            catch (Exception exp)
+            {
+                msgOutput(exp.Message);
             }
         }
 
