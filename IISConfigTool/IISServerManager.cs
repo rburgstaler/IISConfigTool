@@ -91,7 +91,7 @@ namespace IISConfigTool
         }
 
         ////http:*:80:www.abcdefg.com
-        ////https:*:443:www.abcdefg.com::CertStoreName\\a03083aabcd6bdfec92214df7e885c9e1e1a864d
+        ////https:*:443:www.abcdefg.com:CertStoreName\a03083aabcd6bdfec92214df7e885c9e1e1a864d
         public override void SetBindings(String siteBindings)
         {
             //We need to parse the bindings string
