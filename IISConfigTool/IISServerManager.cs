@@ -71,7 +71,7 @@ namespace IISConfigTool
         {
             Directory.CreateDirectory(filePath);
             IISServerManagerSite retVal = new IISServerManagerSite();
-            retVal.site = retVal.ServerMgr.Sites.Add(serverComment, filePath, 80);
+            retVal.site = retVal.ServerMgr.Sites.Add(serverComment, "http", "*:80:"+serverComment, filePath);
             retVal.SetBindings(serverBindings);
 
             //We also need to setup an app pool most likely
