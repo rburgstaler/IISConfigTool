@@ -159,7 +159,6 @@ namespace IISConfigTool
                     if (DateTime.Now > giveUpAfter)
                     {
                         throw new Exception(String.Format("Inner error: {0} Outer error: {1}.  \r\n{2}", (exp.InnerException != null) ? exp.InnerException.Message : "No inner exception", exp.Message, exp.StackTrace));
-                        break;
                     }
                 }
                 System.Threading.Thread.Sleep(250);
