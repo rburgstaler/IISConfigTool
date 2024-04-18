@@ -63,7 +63,7 @@ namespace IISConfigTool
                 store.Open(OpenFlags.OpenExistingOnly);
                 foreach (var cert in store.Certificates)
                 {
-                    msgOutput($"{cert.Subject} - {cert.SubjectName} {cert.FriendlyName} - {ByteArrayToHexString(cert.GetCertHash())}");
+                    msgOutput($"Subject: {cert.Subject}, FriendlyName: {cert.FriendlyName}, SubjectName.Name: {cert.SubjectName.Name}, Hash: {ByteArrayToHexString(cert.GetCertHash())}");
                 }
             }
             catch (Exception exp)
